@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LinearGradientView">
+        <attr name="startColor" format="color|reference" />
+        <attr name="middleColor" format="color|reference" />
+        <attr name="endColor" format="color|reference" />
+        <attr name="tileMode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>

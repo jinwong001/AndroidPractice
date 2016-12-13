@@ -9,3 +9,6 @@
 .externalNativeBuild
 gradlew
 gradlew.bat
+/freeline
+*.json
+*.py
