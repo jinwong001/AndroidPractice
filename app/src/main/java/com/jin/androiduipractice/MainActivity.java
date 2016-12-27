@@ -11,7 +11,12 @@ import android.widget.ListView;
 import com.jin.androiduipractice.AudioBar.AudioBarActivity;
 import com.jin.androiduipractice.LinearGradient.LinearGradientActivity;
 import com.jin.androiduipractice.drawer.DrawerActivity;
+import com.jin.androiduipractice.moneyScale.MoneyScaleActivity;
 import com.jin.androiduipractice.move.MoveActivity;
+import com.jin.androiduipractice.path.PathActivity;
+import com.jin.androiduipractice.redPoint.RedPointActivity;
+import com.jin.androiduipractice.roundIndicator.RoundIndicatorActivity;
+import com.jin.androiduipractice.weatherCurve.WeatherCurveActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,11 @@ public class MainActivity extends ListActivity {
         mList.add("音频条");
         mList.add("滑动");
         mList.add("ViewDragHelper");
+        mList.add("芝麻信用积分轮盘");
+        mList.add("选择金钱刻度线");
+        mList.add("path");
+        mList.add("气温变化曲线");
+        mList.add("QQ小红点");
     }
 
     @Override
@@ -54,6 +64,21 @@ public class MainActivity extends ListActivity {
                 break;
             case "ViewDragHelper":
                 startActivity(new Intent(this, DrawerActivity.class));
+                break;
+            case "芝麻信用积分轮盘":
+                startActivity(new Intent(this, RoundIndicatorActivity.class));
+                break;
+            case "选择金钱刻度线":
+                startActivity(new Intent(this, MoneyScaleActivity.class));
+                break;
+            case "path":
+                startActivity(new Intent(this, PathActivity.class));
+                break;
+            case "气温变化曲线":
+                startActivity(new Intent(this, WeatherCurveActivity.class));
+                break;
+            case "QQ小红点":
+                startActivity(new Intent(this, RedPointActivity.class));
                 break;
             default:
                 break;

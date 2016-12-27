@@ -37,7 +37,6 @@ public class DrawerView extends FrameLayout {
             return child == mMainView;
         }
 
-
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
             return left;
@@ -47,7 +46,6 @@ public class DrawerView extends FrameLayout {
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
 
-
             if (mMainView.getLeft() < mMenuViewWidth / 2) {
                 mViewDragHelper.smoothSlideViewTo(mMainView, 0, 0);
                 ViewCompat.postInvalidateOnAnimation(DrawerView.this);
@@ -55,6 +53,12 @@ public class DrawerView extends FrameLayout {
                 mViewDragHelper.smoothSlideViewTo(mMainView, mMenuViewWidth, 0);
                 ViewCompat.postInvalidateOnAnimation(DrawerView.this);
             }
+        }
+
+        @Override
+        public void onEdgeDragStarted(int edgeFlags, int pointerId) {
+            super.onEdgeDragStarted(edgeFlags, pointerId);
+            mViewDragHelper.captureChildView(mMainView, pointerId);
         }
     };
 
@@ -64,6 +68,7 @@ public class DrawerView extends FrameLayout {
         super.onFinishInflate();
         mMenuView = getChildAt(0);
         mMainView = getChildAt(1);
+
     }
 
     @Override

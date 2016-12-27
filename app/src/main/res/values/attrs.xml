@@ -11,4 +11,19 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="RoundIndicatorView">
+        <attr name="startAngel" format="integer|reference" />
+        <attr name="sweepAngel" format="integer|reference" />
+        <attr name="maxNum" format="integer|reference" />
+        <attr name="sweepInWidth" format="dimension|reference" />
+        <attr name="value" format="integer|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MoneyScaleView">
+        <attr name="moneyScale" format="integer|reference" />
+        <attr name="maxValue" format="integer|reference" />
+        <attr name="minValue" format="integer|reference" />
+        <attr name="money" format="integer|reference" />
+    </declare-styleable>
+
 </resources>
