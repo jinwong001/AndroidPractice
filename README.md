@@ -1,5 +1,5 @@
 # AndroidUIPractice
-Android中UI项目实践学习
+Android 项目实践学习
 
 UI 练习项目：
 - LinearGradient
