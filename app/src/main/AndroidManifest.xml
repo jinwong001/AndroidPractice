@@ -3,6 +3,7 @@
     package="com.jin.androiduipractice">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +25,8 @@
         <activity android:name=".moneyScale.MoneyScaleActivity" />
         <activity android:name=".path.PathActivity" />
         <activity android:name=".redPoint.RedPointActivity" />
-        <activity android:name=".weatherCurve.WeatherCurveActivity"></activity>
+        <activity android:name=".weatherCurve.WeatherCurveActivity" />
+        <activity android:name=".drawable.DrawableActivity"></activity>
     </application>
 
 </manifest>

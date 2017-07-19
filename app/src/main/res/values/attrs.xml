@@ -26,4 +26,14 @@
         <attr name="money" format="integer|reference" />
     </declare-styleable>
 
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" format="dimension" />
+        <attr name="type" />
+    </declare-styleable>
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
 </resources>

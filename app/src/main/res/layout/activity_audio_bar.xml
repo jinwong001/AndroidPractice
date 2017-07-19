@@ -12,7 +12,7 @@
 
 
     <com.jin.androiduipractice.AudioBar.AudioBarView
-        android:layout_width="200dp"
+        android:layout_width="@dimen/space_200"
         android:layout_height="200dp" />
 
 </RelativeLayout>
