@@ -15,8 +15,8 @@ import android.support.annotation.Nullable;
 
 /**
  * Created by wanny-n1 on 2017/7/17.
+ * link  http://blog.csdn.net/lmj623565791/article/details/41967509
  */
-
 public class RoundImageDrawable extends Drawable {
     private Paint mPaint;
     private Bitmap mBitmap;
@@ -27,6 +27,10 @@ public class RoundImageDrawable extends Drawable {
         this.mBitmap = bitmap;
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
+        // Shader.TileMode.CLAMP    拉伸
+        // Shader.TileMode.REPEAT   重复
+        // Shader.TileMode.MIRROR   镜像
+        //BitmapShader通过设置给mPaint，然后用这个mPaint绘图时，就会根据你设置的TileMode，对绘制区域进行着色
         mPaint.setShader(new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
     }
 

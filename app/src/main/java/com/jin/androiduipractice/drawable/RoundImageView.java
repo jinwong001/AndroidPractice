@@ -3,12 +3,11 @@ package com.jin.androiduipractice.drawable;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -50,11 +49,12 @@ public class RoundImageView extends AppCompatImageView {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView);
         mBorderRadius = array.getDimensionPixelSize(R.styleable.RoundImageView_borderRadius,
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()));
-        type = array.getInt(R.styleable.RoundImageView_type, 0);
+        type = array.getInt(R.styleable.RoundImageView_type, TYPE_CIRCLE);
         array.recycle();
 
-        mPaint=new Paint();
+        mPaint = new Paint();
         mPaint.setAntiAlias(true);
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
     }
 
 
@@ -83,33 +83,55 @@ public class RoundImageView extends AppCompatImageView {
             return;
         }
 
-
         Bitmap bitmap = drawableToBitamp(drawable);
-        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        // BitmapShader
+//        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+//
+//        float scale = 1.0f;
+//        if (type == TYPE_ROUND) {
+//            // 如果图片的宽或者高与view的宽高不匹配，计算出需要缩放的比例；缩放后的图片的宽高，一定要大于我们view的宽高；所以我们这里取大值；
+//            scale = Math.max(getWidth() * 1.0f / bitmap.getWidth(), getHeight() * 1.0f / bitmap.getHeight());
+//        } else if (type == TYPE_CIRCLE) {
+//            // 拿到bitmap宽或高的小值
+//            scale = mRadius * 2.0f / Math.min(bitmap.getWidth(), bitmap.getHeight());
+//        }
+//        Matrix matrix = new Matrix();
+//        matrix.setScale(scale, scale);
+//        bitmapShader.setLocalMatrix(matrix);
+//
+//        // 设置shader
+//        mPaint.setShader(bitmapShader);
+//
+//        if (type == TYPE_ROUND) {
+//            canvas.drawRoundRect(mRectF, mBorderRadius, mBorderRadius, mPaint);
+//        } else {
+//            canvas.drawCircle(mRadius, mRadius, mRadius, mPaint);
+//        }
 
-        float scale = 1.0f;
-        if (type == TYPE_ROUND) {
-            // 如果图片的宽或者高与view的宽高不匹配，计算出需要缩放的比例；缩放后的图片的宽高，一定要大于我们view的宽高；所以我们这里取大值；
-            scale = Math.max(getWidth() * 1.0f / bitmap.getWidth(), getHeight() * 1.0f / bitmap.getHeight());
-        } else if (type == TYPE_CIRCLE) {
-            // 拿到bitmap宽或高的小值
-            scale = mRadius * 2.0f / Math.min(bitmap.getWidth(), bitmap.getHeight());
-        }
-        Matrix matrix = new Matrix();
-        matrix.setScale(scale, scale);
-        bitmapShader.setLocalMatrix(matrix);
+        // Xfermode
 
-        // 设置shader
-        mPaint.setShader(bitmapShader);
-
-
-        if (type == TYPE_ROUND) {
-            canvas.drawRoundRect(mRectF, mBorderRadius, mBorderRadius, mPaint);
-        } else {
-            canvas.drawCircle(mRadius, mRadius, mRadius, mPaint);
-        }
+        Bitmap temp = createBitmap(bitmap);
+        canvas.drawBitmap(temp, 0, 0, null);
     }
 
+
+    private Bitmap createBitmap(Bitmap source) {
+        final Paint paint = new Paint();
+        paint.setAntiAlias(true);
+
+        Bitmap target = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(target);
+        if (type == TYPE_ROUND) {
+            canvas.drawRoundRect(mRectF, mBorderRadius, mBorderRadius, paint);
+        } else {
+            canvas.drawCircle(mRadius, mRadius, mRadius, paint);
+        }
+        // 取两层绘制交集。显示上层。
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        Bitmap temp=Bitmap.createScaledBitmap(source,getWidth(),getHeight(),false);
+        canvas.drawBitmap(temp, 0, 0, paint);
+        return target;
+    }
 
     private Bitmap drawableToBitamp(Drawable drawable) {
         Bitmap bitmap = null;
