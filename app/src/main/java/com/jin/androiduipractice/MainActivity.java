@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.jin.androiduipractice.AudioBar.AudioBarActivity;
 import com.jin.androiduipractice.LinearGradient.LinearGradientActivity;
+import com.jin.androiduipractice.constraint.ConstraintActivity;
 import com.jin.androiduipractice.drawable.DrawableActivity;
 import com.jin.androiduipractice.drawer.DrawerActivity;
 import com.jin.androiduipractice.moneyScale.MoneyScaleActivity;
@@ -45,6 +46,7 @@ public class MainActivity extends ListActivity {
         mList.add("气温变化曲线");
         mList.add("QQ小红点");
         mList.add("自定义Drawable");
+        mList.add("Constraint");
     }
 
     @Override
@@ -84,6 +86,9 @@ public class MainActivity extends ListActivity {
                 break;
             case "自定义Drawable":
                 startActivity(new Intent(this, DrawableActivity.class));
+                break;
+            case "Constraint":
+                startActivity(new Intent(this, ConstraintActivity.class));
                 break;
             default:
                 break;
