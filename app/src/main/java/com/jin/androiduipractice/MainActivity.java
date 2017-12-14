@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.jin.androiduipractice.AudioBar.AudioBarActivity;
 import com.jin.androiduipractice.LinearGradient.LinearGradientActivity;
+import com.jin.androiduipractice.clipboard.ClipboardActivity;
 import com.jin.androiduipractice.constraint.ConstraintActivity;
 import com.jin.androiduipractice.drawable.DrawableActivity;
 import com.jin.androiduipractice.drawer.DrawerActivity;
@@ -47,6 +48,7 @@ public class MainActivity extends ListActivity {
         mList.add("QQ小红点");
         mList.add("自定义Drawable");
         mList.add("Constraint");
+        mList.add("Clipboard");
     }
 
     @Override
@@ -89,6 +91,9 @@ public class MainActivity extends ListActivity {
                 break;
             case "Constraint":
                 startActivity(new Intent(this, ConstraintActivity.class));
+                break;
+            case "Clipboard":
+                startActivity(new Intent(this, ClipboardActivity.class));
                 break;
             default:
                 break;

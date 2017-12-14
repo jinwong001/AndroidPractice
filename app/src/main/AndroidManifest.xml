@@ -27,7 +27,8 @@
         <activity android:name=".redPoint.RedPointActivity" />
         <activity android:name=".weatherCurve.WeatherCurveActivity" />
         <activity android:name=".drawable.DrawableActivity" />
-        <activity android:name=".constraint.ConstraintActivity"></activity>
+        <activity android:name=".constraint.ConstraintActivity" />
+        <activity android:name=".clipboard.ClipboardActivity"></activity>
     </application>
 
 </manifest>
