@@ -2,11 +2,13 @@ package com.jin.androiduipractice;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.jin.androiduipractice.AudioBar.AudioBarActivity;
 import com.jin.androiduipractice.LinearGradient.LinearGradientActivity;
@@ -19,6 +21,9 @@ import com.jin.androiduipractice.move.MoveActivity;
 import com.jin.androiduipractice.path.PathActivity;
 import com.jin.androiduipractice.redPoint.RedPointActivity;
 import com.jin.androiduipractice.roundIndicator.RoundIndicatorActivity;
+import com.jin.androiduipractice.scheme.Scheme2Activity;
+import com.jin.androiduipractice.scheme.SchemeActivity;
+import com.jin.androiduipractice.scheme.SchemeStartActivity;
 import com.jin.androiduipractice.weatherCurve.WeatherCurveActivity;
 
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setData();
         setListAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, mList));
+        handlerIntent();
     }
 
     private void setData() {
@@ -49,6 +55,7 @@ public class MainActivity extends ListActivity {
         mList.add("自定义Drawable");
         mList.add("Constraint");
         mList.add("Clipboard");
+        mList.add("Scheme");
     }
 
     @Override
@@ -95,8 +102,45 @@ public class MainActivity extends ListActivity {
             case "Clipboard":
                 startActivity(new Intent(this, ClipboardActivity.class));
                 break;
+            case "Scheme":
+                startActivity(new Intent(this, SchemeStartActivity.class));
+                break;
             default:
                 break;
         }
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handlerIntent();
+    }
+
+    private void handlerIntent() {
+        Intent intent = getIntent();
+
+        if (intent == null || TextUtils.isEmpty(intent.getAction()) || TextUtils.isEmpty(intent.getScheme())
+                || TextUtils.isEmpty(intent.getDataString())) {
+            return;
+        }
+        Uri uri = intent.getData();
+        String schemeId = uri.getAuthority();
+        if (TextUtils.isEmpty(schemeId)) {
+            return;
+        }
+        switch (schemeId) {
+            case "scheme1":
+                Toast.makeText(this, "scheme1", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, SchemeActivity.class));
+                break;
+            case "scheme2":
+                Toast.makeText(this, "scheme2", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, Scheme2Activity.class));
+                break;
+            default:
+                break;
+        }
+    }
+
 }
