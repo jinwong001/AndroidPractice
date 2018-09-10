@@ -24,6 +24,7 @@ import com.jin.androiduipractice.roundIndicator.RoundIndicatorActivity;
 import com.jin.androiduipractice.scheme.Scheme2Activity;
 import com.jin.androiduipractice.scheme.SchemeActivity;
 import com.jin.androiduipractice.scheme.SchemeStartActivity;
+import com.jin.androiduipractice.waveView.WaveViewActivity;
 import com.jin.androiduipractice.weatherCurve.WeatherCurveActivity;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class MainActivity extends ListActivity {
         mList.add("Constraint");
         mList.add("Clipboard");
         mList.add("Scheme");
+        mList.add("WaveView");
     }
 
     @Override
@@ -105,6 +107,8 @@ public class MainActivity extends ListActivity {
             case "Scheme":
                 startActivity(new Intent(this, SchemeStartActivity.class));
                 break;
+            case "WaveView":
+                startActivity(new Intent(this, WaveViewActivity.class));
             default:
                 break;
         }

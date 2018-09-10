@@ -13,23 +13,18 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter>
-
-                <data
-                    android:scheme="practice" />
+                <data android:scheme="practice" />
 
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
             </intent-filter>
-
         </activity>
-
         <activity android:name=".LinearGradient.LinearGradientActivity" />
         <activity android:name=".AudioBar.AudioBarActivity" />
         <activity android:name=".move.MoveActivity" />
@@ -43,32 +38,39 @@
         <activity android:name=".constraint.ConstraintActivity" />
         <activity android:name=".clipboard.ClipboardActivity" />
         <activity android:name=".scheme.SchemeActivity">
-            <!--<intent-filter>-->
-            <!--&lt;!&ndash; 协议部分，随便设置 &ndash;&gt;-->
-            <!--<data-->
-            <!--android:host="scheme1"-->
-            <!--android:scheme="practice" />-->
 
-            <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--<category android:name="android.intent.category.BROWSABLE" />-->
+            <!-- <intent-filter> -->
+            <!-- &lt;!&ndash; 协议部分，随便设置 &ndash;&gt; -->
+            <!-- <data -->
+            <!-- android:host="scheme1" -->
+            <!-- android:scheme="practice" /> -->
 
-            <!--<action android:name="Android.intent.action.VIEW" />-->
-            <!--</intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+
+
+            <!-- <action android:name="Android.intent.action.VIEW" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".scheme.SchemeStartActivity" />
         <activity android:name=".scheme.Scheme2Activity">
-            <!--<intent-filter>-->
-            <!--&lt;!&ndash; 协议部分，随便设置 &ndash;&gt;-->
-            <!--<data-->
-            <!--android:host="scheme2"-->
-            <!--android:scheme="practice" />-->
 
-            <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--<category android:name="android.intent.category.BROWSABLE" />-->
+            <!-- <intent-filter> -->
+            <!-- &lt;!&ndash; 协议部分，随便设置 &ndash;&gt; -->
+            <!-- <data -->
+            <!-- android:host="scheme2" -->
+            <!-- android:scheme="practice" /> -->
 
-            <!--<action android:name="Android.intent.action.VIEW" />-->
-            <!--</intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+
+
+            <!-- <action android:name="Android.intent.action.VIEW" /> -->
+            <!-- </intent-filter> -->
         </activity>
+        <activity android:name=".waveView.WaveViewActivity"></activity>
     </application>
 
 </manifest>
